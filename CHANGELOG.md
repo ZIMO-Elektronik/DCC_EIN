@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.3.2
+- Bugfix CMake always includes tests
+
 ## 0.3.1
 - `constexpr` all the things
 
