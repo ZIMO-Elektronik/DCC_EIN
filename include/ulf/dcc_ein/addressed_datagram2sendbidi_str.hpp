@@ -74,4 +74,4 @@ addressed_datagram2sendbidi_str(AddressedDatagram const& addressed_datagram) {
   return str;
 }
 
-}  // namespace ulf::dcc_ein
+} // namespace ulf::dcc_ein

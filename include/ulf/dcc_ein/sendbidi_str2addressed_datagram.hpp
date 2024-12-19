@@ -76,4 +76,4 @@ sendbidi_str2addressed_datagram(std::string_view str) {
   return AddressedDatagram{.addr = addr, .datagram = datagram};
 }
 
-}  // namespace ulf::dcc_ein
+} // namespace ulf::dcc_ein

@@ -19,4 +19,4 @@ struct AddressedDatagram {
   dcc::bidi::Datagram<> datagram{};
 };
 
-}  // namespace ulf::dcc_ein
+} // namespace ulf::dcc_ein

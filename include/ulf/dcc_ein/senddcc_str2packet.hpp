@@ -62,4 +62,4 @@ senddcc_str2packet(std::string_view str) {
   return packet;
 }
 
-}  // namespace ulf::dcc_ein
+} // namespace ulf::dcc_ein

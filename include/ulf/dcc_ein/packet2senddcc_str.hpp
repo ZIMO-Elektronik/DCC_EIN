@@ -31,4 +31,4 @@ constexpr auto packet2senddcc_str(dcc::Packet const& packet) {
   return bytes2senddcc_str({cbegin(packet), size(packet)});
 }
 
-}  // namespace ulf::dcc_ein
+} // namespace ulf::dcc_ein

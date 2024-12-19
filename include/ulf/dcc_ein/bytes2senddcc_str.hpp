@@ -49,4 +49,4 @@ constexpr std::string bytes2senddcc_str(std::span<uint8_t const> bytes) {
   return str;
 }
 
-}  // namespace ulf::dcc_ein
+} // namespace ulf::dcc_ein

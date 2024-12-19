@@ -21,4 +21,4 @@ inline constexpr auto sendbidi_str_size{size(sendbidi_prefix) +
                                         size("s0000 "sv) +
                                         size("00 00 00 00 00 00 00 00\r"sv)};
 
-}  // namespace ulf::dcc_ein
+} // namespace ulf::dcc_ein

@@ -46,4 +46,4 @@ ack2senddcc_str(char id, uint8_t byte) {
   return str;
 }
 
-}  // namespace ulf::dcc_ein
+} // namespace ulf::dcc_ein
