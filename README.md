@@ -53,6 +53,13 @@ The string of the `sendbidi` command follows the pattern `sendbidi [ubsalrtei][0
 | e                           | Automatic logon                                              |
 | i                           | Idle or system                                               |
 
+
+> [!IMPORTANT]  
+> Bytes inside a `sendbidi` string where no data was received must be filled with zeros. For example, an answer that does not include channel 1 might look like this.
+> ```cpp
+> "sendbidi s0003 00 00 55 b1 d2 5a ac 9a\r"
+> ```
+
 ## Getting Started
 ### Prerequisites
 - C++23 compatible compiler
