@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.4.0
+- Add new address type identifiers
+  - `dcc::Address::BasicLoco`
+  - `dcc::Address::BasicAccessory`
+  - `dcc::Address::ExtendedLoco`
+  - `dcc::Address::BasicAccessory`
+
 ## 0.3.2
 - Bugfix CMake always includes tests
 
