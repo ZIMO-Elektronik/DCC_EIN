@@ -26,7 +26,7 @@ TEST(sendbidi_str2addressed_datagram, string_does_not_start_with_sendbidi) {
 
 TEST(sendbidi_str2addressed_datagram, address_identifier_wrong) {
   auto d{ulf::dcc_ein::sendbidi_str2addressed_datagram(
-    "sendbidi x002a f4 58 81 3b c4 79 f5 df\r")};
+    "sendbidi z002a f4 58 81 3b c4 79 f5 df\r")};
   EXPECT_FALSE(d);
   EXPECT_EQ(d, std::unexpected(std::errc::invalid_argument));
 }
@@ -37,5 +37,6 @@ TEST(sendbidi_str2addressed_datagram, string_valid) {
   EXPECT_TRUE(d);
   EXPECT_TRUE(*d);
   auto [addr, datagram]{**d};
-  EXPECT_EQ(addr, (dcc::Address{.value = 0x2Au, .type = dcc::Address::Short}));
+  EXPECT_EQ(addr,
+            (dcc::Address{.value = 0x2Au, .type = dcc::Address::BasicLoco}));
 }
