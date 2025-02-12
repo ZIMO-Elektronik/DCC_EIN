@@ -39,20 +39,20 @@ The command can optionally be answered with a string of the pattern `senddcc [a-
 | p                                 | response byte indicates current buffer level in packets |
 
 ### sendbidi
-The string of the `sendbidi` command follows the pattern `sendbidi [ubsalrtei][0-9a-fA-F]{4}( [0-9a-fA-F]{2}){8}\r`. In addition to the hex ASCII coded datagram, the command also contains the address belonging to the datagram. Since [DCC](https://github.com/ZIMO-Elektronik/DCC) addresses are not unique, an associated identifier that determines the address type must also be included.
+The string of the `sendbidi` command follows the pattern `sendbidi [ubsaxlrtei][0-9a-fA-F]{4}( [0-9a-fA-F]{2}){8}\r`. In addition to the hex ASCII coded datagram, the command also contains the address belonging to the datagram. Since [DCC](https://github.com/ZIMO-Elektronik/DCC) addresses are not unique, an associated identifier that determines the address type must also be included.
 
 | Address Preceding Character | [DCC](https://github.com/ZIMO-Elektronik/DCC) Address Type   |
 | --------------------------- | ------------------------------------------------------------ |
 | u                           | Unknown or service                                           |
 | b                           | Broadcast                                                    |
-| s                           | Short                                                        |
-| a                           | Accessory                                                    |
-| l                           | Long                                                         |
+| s                           | Basic loco (short)                                           |
+| a                           | Basic accessory                                              |
+| x                           | Extended accessory                                           |
+| l                           | Extended loco (long)                                         |
 | r                           | Reserved                                                     |
 | t                           | Data transfer                                                |
 | e                           | Automatic logon                                              |
 | i                           | Idle or system                                               |
-
 
 > [!IMPORTANT]  
 > Bytes inside a `sendbidi` string where no data was received must be filled with zeros. For example, an answer that does not include channel 1 might look like this.
@@ -70,13 +70,13 @@ This library is meant to be consumed with CMake.
 
 ```cmake
 # Either by including it with CPM
-cpmaddpackage("gh:ZIMO-Elektronik/ULF_DCC_EIN@0.3.2")
+cpmaddpackage("gh:ZIMO-Elektronik/ULF_DCC_EIN@0.4.0")
 
 # or the FetchContent module
 FetchContent_Declare(
   ULF_DCC_EIN
   GIT_REPOSITORY "https://github.com/ZIMO-Elektronik/ULF_DCC_EIN"
-  GIT_TAG v0.3.2)
+  GIT_TAG v0.4.0)
 
 target_link_libraries(YourTarget INTERFACE ULF::DCC_EIN)
 ```
@@ -126,7 +126,7 @@ A `sendbidi` string can be generated from an `AddressedDatagram` via `addressed_
 ```cpp
 // Create sendbidi string from address and datagram
 ulf::dcc_ein::AddressedDatagram addressed_datagram{
-  .addr = {.value = 3u, .type = dcc::Address::Short},
+  .addr = {.value = 3u, .type = dcc::Address::BasicLoco},
   .datagram = {0xA3u, 0xACu, 0x55u, 0xB1u, 0xD2u, 0x5Au, 0xACu, 0x9Au}};
 auto sendbidi_str{
   ulf::dcc_ein::addressed_datagram2sendbidi_str(addressed_datagram)};

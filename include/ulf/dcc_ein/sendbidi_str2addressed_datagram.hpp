@@ -44,9 +44,10 @@ sendbidi_str2addressed_datagram(std::string_view str) {
   switch (str[size(sendbidi_prefix)]) {
     case 'u': addr.type = dcc::Address::UnknownService; break;
     case 'b': addr.type = dcc::Address::Broadcast; break;
-    case 's': addr.type = dcc::Address::Short; break;
-    case 'a': addr.type = dcc::Address::Accessory; break;
-    case 'l': addr.type = dcc::Address::Long; break;
+    case 's': addr.type = dcc::Address::BasicLoco; break;
+    case 'a': addr.type = dcc::Address::BasicAccessory; break;
+    case 'x': addr.type = dcc::Address::ExtendedAccessory; break;
+    case 'l': addr.type = dcc::Address::ExtendedLoco; break;
     case 'r': addr.type = dcc::Address::Reserved; break;
     case 't': addr.type = dcc::Address::DataTransfer; break;
     case 'e': addr.type = dcc::Address::AutomaticLogon; break;

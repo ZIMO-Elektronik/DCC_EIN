@@ -23,7 +23,7 @@ namespace ulf::dcc_ein {
 /// Convert addressed datagram to sendbidi string
 ///
 /// The returned string will have the pattern
-/// 'sendbidi [ubsalrtei][0-9a-f]{4}( [0-9a-f]{2}){8}\r'. This string is sent
+/// 'sendbidi [ubsaxlrtei][0-9a-f]{4}( [0-9a-f]{2}){8}\r'. This string is sent
 /// when a BiDi datagram has been received.
 ///
 /// \param  addr      Address
@@ -42,9 +42,10 @@ addressed_datagram2sendbidi_str(AddressedDatagram const& addressed_datagram) {
   switch (addr.type) {
     case dcc::Address::UnknownService: *first++ = 'u'; break;
     case dcc::Address::Broadcast: *first++ = 'b'; break;
-    case dcc::Address::Short: *first++ = 's'; break;
-    case dcc::Address::Accessory: *first++ = 'a'; break;
-    case dcc::Address::Long: *first++ = 'l'; break;
+    case dcc::Address::BasicLoco: *first++ = 's'; break;
+    case dcc::Address::BasicAccessory: *first++ = 'a'; break;
+    case dcc::Address::ExtendedAccessory: *first++ = 'x'; break;
+    case dcc::Address::ExtendedLoco: *first++ = 'l'; break;
     case dcc::Address::Reserved: *first++ = 'r'; break;
     case dcc::Address::DataTransfer: *first++ = 't'; break;
     case dcc::Address::AutomaticLogon: *first++ = 'e'; break;

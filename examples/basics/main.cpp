@@ -37,7 +37,7 @@ void senddcc_str2packet(auto&& senddcc_str) {
 auto addressed_datagram2sendbidi_str() {
   // Create sendbidi string from address and datagram
   ulf::dcc_ein::AddressedDatagram addressed_datagram{
-    .addr = {.value = 3u, .type = dcc::Address::Short},
+    .addr = {.value = 3u, .type = dcc::Address::BasicLoco},
     .datagram = {0xA3u, 0xACu, 0x55u, 0xB1u, 0xD2u, 0x5Au, 0xACu, 0x9Au}};
   auto sendbidi_str{
     ulf::dcc_ein::addressed_datagram2sendbidi_str(addressed_datagram)};
